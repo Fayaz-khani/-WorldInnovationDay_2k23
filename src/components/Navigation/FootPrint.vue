@@ -48,7 +48,11 @@ export default {
       }
 
       // Make an API call to the Flask backend
+<<<<<<< HEAD
       fetch('http://localhost:8081/calculate-carbon-footprint', {
+=======
+      fetch('http://127.0.0.1:5000/calculate-carbon-footprint', {
+>>>>>>> 996714bf5d9fabaf76bf2acbce75981217b8484b
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -70,4 +74,9 @@ export default {
 }
 </script>
 
+<<<<<<< HEAD
 <style></style>
+=======
+<style>
+</style>
+>>>>>>> 996714bf5d9fabaf76bf2acbce75981217b8484b
