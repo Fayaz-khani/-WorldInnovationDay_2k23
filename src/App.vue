@@ -16,8 +16,11 @@
           </div>
           <v-spacer></v-spacer>
 
-          <v-btn depressed raised  color="#33C2EA"   class="black--text ">
-            REGISTER NOW
+          <v-btn depressed to="/FootPrint" raised  color="#33C2EA"   class="mx-3 black--text ">
+            Calculate
+          </v-btn> 
+          <v-btn to="/" depressed raised  color="#33C2EA"   class=" black--text ">
+            Home
           </v-btn>
           <v-btn depressed raised  color="#33C2EA" dark class="black--text mx-4">
             LOG IN
@@ -31,7 +34,8 @@
           
         </v-app-bar>
     <v-main>
-      <MianComp />
+      <router-view></router-view>
+      <!-- <MianComp /> -->
       <!-- <FootPrint /> -->
       <!-- <PageNotFound /> -->
     </v-main>
@@ -63,14 +67,14 @@
 
 <script>
 // import PageNotFound from './components/PageNotFound';
-import MianComp from './components/Navigation/MianComp.vue';
+// import MianComp from './components/Navigation/MianComp.vue';
 // import FootPrint from './components/Navigation/FootPrint.vue';
 
 export default {
   name: 'App',
 
   components: {
-    MianComp,
+    // MianComp,
     // FootPrint,
     // PageNotFound,
   },
