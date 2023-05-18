@@ -25,58 +25,49 @@
   </div>
 </template>
 
+
 <script>
-export default {
-  data() {
-    return {
-      response:null,
-      softwareName: '',
-      programmingLanguage: '',
-      linesOfCode: null,
-      deploymentEnvironment: '',
-      numUsers: null
-    }
-  },
-  methods: {
-    calculateCarbonFootprint() {
-      const payload = {
-        software_name: this.softwareName,
-        programming_language: this.programmingLanguage,
-        lines_of_code: this.linesOfCode,
-        deployment_environment: this.deploymentEnvironment,
-        num_users: this.numUsers
-      }
+     export default {
+       data() {
+         return {
+          
+      response: null,
+           softwareName: '',
+           programmingLanguage: '',
+           linesOfCode: null,
+           deploymentEnvironment: '',
+           numUsers: null
+         }
+       },
+       methods: {
+         calculateCarbonFootprint() {
+           const payload = {
+             software_name: this.softwareName,
+             programming_language: this.programmingLanguage,
+             lines_of_code: this.linesOfCode,
+             deployment_environment: this.deploymentEnvironment,
+             num_users: this.numUsers
+           }
 
-      // Make an API call to the Flask backend
-<<<<<<< HEAD
-      fetch('http://localhost:8081/calculate-carbon-footprint', {
-=======
-      fetch('http://127.0.0.1:5000/calculate-carbon-footprint', {
->>>>>>> 996714bf5d9fabaf76bf2acbce75981217b8484b
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      })
-        .then(response => response.json())
-        .then(data => {
-          this.response = data;
-          // Handle the response from the Flask backend
-          // Update the UI or display the result as needed
-          console.log(data)
-        })
-        .catch(error => {
-          console.error(error)
-        })
-    }
-  }
-}
-</script>
-
-<<<<<<< HEAD
-<style></style>
-=======
-<style>
-</style>
->>>>>>> 996714bf5d9fabaf76bf2acbce75981217b8484b
+           // Make an API call to the Flask backend
+           fetch('/calculate-carbon-footprint', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(payload)
+           })
+           .then(response => response.json())
+           .then(data => {
+            this.response = data;
+             // Handle the response from the Flask backend
+             // Update the UI or display the result as needed
+             console.log(data)
+           })
+           .catch(error => {
+             console.error(error)
+           })
+         }
+       }
+     }
+     </script>
