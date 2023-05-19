@@ -1,4 +1,4 @@
-# frontend
+# green-software-development
 
 ## Project setup
 ```
