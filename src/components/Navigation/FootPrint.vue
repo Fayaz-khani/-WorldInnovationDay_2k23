@@ -47,11 +47,11 @@ export default {
       insight1: null,
       insight2: null,
       response: null,
-      softwareName: 'MyApp',
-      programmingLanguage: 'Python',
-      linesOfCode: 1,
-      deploymentEnvironment: 'Azure',
-      numUsers: 1
+      softwareName: null,
+      programmingLanguage: null,
+      linesOfCode: null,
+      deploymentEnvironment: null,
+      numUsers: null
     }
   },
   methods: {
