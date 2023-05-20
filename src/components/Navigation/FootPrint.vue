@@ -16,8 +16,19 @@
           <h3 class="ma-4">
             Here is the response of your Given Information:
           </h3>
-          <div>
-            {{ response }}
+          <div class="pa-4">
+            <div>
+              Carbon FootPrint : {{ corbonfootPrint }}
+
+            </div>
+            <div>
+              insights : {{ insight1 }}
+
+              <br>
+              insights : {{  insight2 }}
+
+            </div>
+            <!-- Carbon FootPrint : {{ corbonfootPrint }} -->
           </div>
         </v-col>
       </v-row>
@@ -27,47 +38,43 @@
 
 
 <script>
-     export default {
-       data() {
-         return {
-          
-      response: null,
-           softwareName: '',
-           programmingLanguage: '',
-           linesOfCode: null,
-           deploymentEnvironment: '',
-           numUsers: null
-         }
-       },
-       methods: {
-         calculateCarbonFootprint() {
-           const payload = {
-             software_name: this.softwareName,
-             programming_language: this.programmingLanguage,
-             lines_of_code: this.linesOfCode,
-             deployment_environment: this.deploymentEnvironment,
-             num_users: this.numUsers
-           }
+import axios from 'axios';
 
-           // Make an API call to the Flask backend
-           fetch('/calculate-carbon-footprint', {
-             method: 'POST',
-             headers: {
-               'Content-Type': 'application/json'
-             },
-             body: JSON.stringify(payload)
-           })
-           .then(response => response.json())
-           .then(data => {
-            this.response = data;
-             // Handle the response from the Flask backend
-             // Update the UI or display the result as needed
-             console.log(data)
-           })
-           .catch(error => {
-             console.error(error)
-           })
-         }
-       }
-     }
-     </script>
+export default {
+  data() {
+    return {
+      corbonfootPrint: null,
+      insight1: null,
+      insight2: null,
+      response: null,
+      softwareName: 'MyApp',
+      programmingLanguage: 'Python',
+      linesOfCode: 1,
+      deploymentEnvironment: 'Azure',
+      numUsers: 1
+    }
+  },
+  methods: {
+    async calculateCarbonFootprint() {
+      axios
+        .post('http://127.0.0.1:5000/calculate-carbon-footprint', {
+          software_name: this.softwareName,
+          programming_language: this.programmingLanguage,
+          lines_of_code: this.linesOfCode,
+          deployment_environment: this.deploymentEnvironment,
+          num_users: this.numUsers
+        })
+        .then(res => {
+          this.response = res.data;
+          this.corbonfootPrint = res.data.carbon_footprint;
+          this.insight1 = res.data.insights[0];
+          this.insight2 = res.data.insights[1];
+          console.log(res.data)
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
+}
+</script>
